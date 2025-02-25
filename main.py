@@ -371,7 +371,13 @@ class SpaceInvaders(object):
         self.clock = time.Clock()
         self.caption = display.set_caption('Space Invaders')
         self.screen = screen
-        self.background = image.load(IMAGE_PATH + 'background.jpg').convert()
+        self.backgrounds = [
+            image.load(IMAGE_PATH + "background.jpg").convert(),
+            image.load(IMAGE_PATH + "background1.jpg").convert(),
+            image.load(IMAGE_PATH + "background2.jpg").convert(),
+        ]
+        self.current_background_image_index = 0
+        self.background = self.backgrounds[self.current_background_image_index]
         self.startGame = False
         self.mainScreen = True
         self.settingsScreen = False
@@ -398,13 +404,24 @@ class SpaceInvaders(object):
         self.startButton = Button("Start", (300, 300), (200, 60), self.start_game)
         self.settingsButton = Button("Settings", (300, 380), (200, 60), self.show_settings)
         self.exitButton = Button("Exit", (300, 460), (200, 60), sys.exit)
-        self.backButton = Button("Back", (300, 460), (200, 60), self.back_to_menu)
+        self.backButton = Button("Back", (300, 460), (150, 60), self.back_to_menu)
         self.volumeUpButton = Button("+", (450, 300), (50, 50), self.increase_volume)
         self.volumeDownButton = Button("-", (350, 300), (50, 50), self.decrease_volume)
         self.difficultyUpButton = Button("+", (450, 360), (50, 50), self.increase_difficulty)
         self.difficultyDownButton = Button("-", (350, 360), (50, 50), self.decrease_difficulty)
 
+        self.backgroundNextButton = Button(">", (450, 420), (50, 50), self.next_background)
+        self.backgroundPrevButton = Button("<", (350, 420), (50, 50), self.prev_background)
+
         self.buttons = [self.startButton, self.settingsButton, self.exitButton]
+
+    def next_background(self):
+        self.current_background_image_index = (self.current_background_image_index + 1) % len(self.backgrounds)
+        self.background = self.backgrounds[self.current_background_image_index]
+
+    def prev_background(self):
+        self.current_background_image_index = (self.current_background_image_index - 1) % len(self.backgrounds)
+        self.background = self.backgrounds[self.current_background_image_index]
 
     def load_scores(self):
         try:
@@ -440,6 +457,7 @@ class SpaceInvaders(object):
         self.makeNewShip = False
         self.shipAlive = True
         self.waveText = Text(FONT, 20, f'Wave {self.wave}', WHITE, 350, 5)
+        self.background = self.backgrounds[self.current_background_image_index]
 
     def make_blockers(self, number):
         blockerGroup = sprite.Group()
@@ -534,6 +552,8 @@ class SpaceInvaders(object):
                     self.volumeDownButton.click()
                     self.difficultyUpButton.click()
                     self.difficultyDownButton.click()
+                    self.backgroundNextButton.click()
+                    self.backgroundPrevButton.click()
 
             if e.type == KEYDOWN:
                 if e.key == K_SPACE and self.startGame and self.shipAlive and not self.pause.paused:
@@ -677,8 +697,8 @@ class SpaceInvaders(object):
 
             elif self.settingsScreen:
                 self.screen.blit(self.background, (0, 0))
-                volume_text = Text(FONT, 25, f"Volume: {int(self.volume * 100)}%", WHITE, 200, 310)
-                difficulty_text = Text(FONT, 25, f"Difficulty: {self.difficulty}", WHITE, 200, 370)
+                volume_text = Text(FONT, 10, f"Volume: {int(self.volume * 100)}%", WHITE, 200, 310)
+                difficulty_text = Text(FONT, 10, f"Difficulty: {self.difficulty}", WHITE, 200, 370)
                 volume_text.draw(self.screen)
                 difficulty_text.draw(self.screen)
                 self.backButton.check_hover(mouse_pos)
@@ -691,6 +711,8 @@ class SpaceInvaders(object):
                 self.difficultyUpButton.draw(self.screen)
                 self.difficultyDownButton.check_hover(mouse_pos)
                 self.difficultyDownButton.draw(self.screen)
+                self.backgroundNextButton.check_hover(mouse_pos)
+                self.backgroundNextButton.draw(self.screen)
 
             elif self.startGame:
                 if not self.enemies and not self.explosionsGroup:
@@ -737,3 +759,4 @@ if __name__ == '__main__':
     game = SpaceInvaders()
     game.main()
 
+#[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=This+is+GOOD+Space+Invaders)](https://git.io/typing-svg)
