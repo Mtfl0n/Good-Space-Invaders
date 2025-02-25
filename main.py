@@ -758,5 +758,3 @@ class SpaceInvaders(object):
 if __name__ == '__main__':
     game = SpaceInvaders()
     game.main()
-
-#[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=This+is+GOOD+Space+Invaders)](https://git.io/typing-svg)
