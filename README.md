@@ -1,4 +1,4 @@
-[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=This+is+GOOD+Space+Invaders)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=This+is+a+GOOD+Space+Invaders)](https://git.io/typing-svg)
 
 
 ## Управление
