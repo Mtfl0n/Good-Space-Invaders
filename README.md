@@ -1,26 +1,24 @@
 [![Typing SVG](https://readme-typing-svg.demolab.com/?lines=This+is+a+GOOD+Space+Invaders)](https://git.io/typing-svg)
 
 
-## Управление
-- **Стрелки влево/вправо** — движение корабля
-- **Пробел** — стрельба
-- **P** — пауза
-- **Esc** — выход
+## Controls
+- **Left/Right Arrows** — ship movement
+- **Space** — shoot
+- **P** — pause
+- **Esc** — exit
 
+## Features
+- Multiple difficulty levels
+- Adjustable volume level (Broken/Unfinished)
+- Select game background in settings
+- Save best scores
+- Pause during game (P key)
 
-## Особенности
-- Несколько уровней сложности
-- Настраиваемый уровень громкости(Сломан/Недоделан)
-- Выбор фона игры в настройках
-- Сохранение лучших результатов
-- Пауза во время игры (клавиша P)
+## Installation
+1. Make sure you have Python 3.x installed.
+2. Install the Pygame library:
 
-## Установка
-1. Убедись, что у тебя установлен Python 3.x.
-2. Установи библиотеку Pygame:
-
-
-## Скриншоты
+## Screenshots
 ![Скриншот игры](images/screenshot.png)
 
 ![Скриншот игры](images/screenshot1.png)
